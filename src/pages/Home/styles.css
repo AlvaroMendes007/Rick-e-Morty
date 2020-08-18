@@ -35,6 +35,14 @@ div.image{
     position: absolute;
 }
 
+@media(max-width: 800px){
+    
+    div.image{
+        height: 350px;
+        width: 250px;
+    }
+}
+
 div.image img{
     height: 100%;
     width: 100%;
@@ -54,15 +62,12 @@ div.image img{
     100%  {left:700px; top:300px;}
   }
 
-
-
-
   .portal {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: 20%;
     transform: translate(-50%, -50%);
     border-radius:50%;
     border: 1px solid lime;
@@ -70,7 +75,16 @@ div.image img{
     overflow:visible;
     background-color: lime;
     animation: wobble 1s infinite linear;
+    z-index: -1;
   }
+
+  @media(max-width: 800px){
+    .portal {
+        width: 350px;
+        height: 350px;
+        left: 30%;
+    }
+  }  
   
   .swirl span {
     background-color: #0a0;
@@ -150,20 +164,10 @@ div.image img{
     color:white;
   }
   
-  .swirl<.swirl {
-    animation-delay: 0.83s;
-    animation-speed: 9.5s;
-    box-shadow:inset -110px -110px 0 lime;
-    border-color:green;
-  }
-  .swirl<.swirl<.swirl,.swirl<.swirl<.swirl<.swirl<.swirl {
-    animation-delay: 0.33s;
-    animation-speed: 8.2s;
-    box-shadow:inset -110px -110px 0 lime;
-  }
+  
   .swirl>.swirl>.swirl>.swirl>.swirl>.swirl>.swirl {
     animation-delay: 0.33s;
-    animation-speed: 8.2s;
+
     box-shadow: inset -20px -20px 0 lime;
   }
   
