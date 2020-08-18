@@ -8,11 +8,10 @@ function Home() {
     const [name, setName] = useState(null);
     const [gender, setGender] = useState(null);
     const [specie, setSpecie] = useState(null);
-    const [page, setPage] = useState(1);
-
+    // const [page, setPage] = useState(null);
 
     useEffect(() => {
-        fetch('https://rickandmortyapi.com/api/character/?page='+page)
+        fetch('https://rickandmortyapi.com/api/character/?page=1')
             .then((results) => results.json())
             .then((data) => {
                 setData(data.results);
@@ -31,16 +30,10 @@ function Home() {
         setName(null);
     }
 
-    function changePage(props){
-        setPage(props.value);
-        console.log(page);
-        props.preventDefault();
-    }
     return (
         <>
             <div className="list">
                 <ul>
-                    <input type="number" min="1" max="34" placeholder="page..." onChange={changePage} value={page}/>
                     <li onClick={() => resetData()}>
                         Reset
                 </li>
