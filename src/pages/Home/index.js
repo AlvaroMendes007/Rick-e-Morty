@@ -6,10 +6,13 @@ function Home() {
     const [data, setData] = useState([]);
     const [image, setImage] = useState(null);
     const [name, setName] = useState(null);
-    // const [page, setPage] = useState(1);
+    const [gender, setGender] = useState(null);
+    const [specie, setSpecie] = useState(null);
+    const [page, setPage] = useState(1);
+
 
     useEffect(() => {
-        fetch('https://rickandmortyapi.com/api/character/')
+        fetch('https://rickandmortyapi.com/api/character/?page='+page)
             .then((results) => results.json())
             .then((data) => {
                 setData(data.results);
@@ -19,6 +22,8 @@ function Home() {
     function handleClick(props) {
         setImage(props.image);
         setName(props.name);
+        setGender(props.gender);
+        setSpecie(props.species);
     }
 
     function resetData() {
@@ -26,10 +31,16 @@ function Home() {
         setName(null);
     }
 
+    function changePage(props){
+        setPage(props.value);
+        console.log(page);
+        props.preventDefault();
+    }
     return (
         <>
             <div className="list">
                 <ul>
+                    <input type="number" min="1" max="34" placeholder="page..." onChange={changePage} value={page}/>
                     <li onClick={() => resetData()}>
                         Reset
                 </li>
@@ -42,7 +53,7 @@ function Home() {
                     </ul>
                 )}
             </div>
-            
+
             {image ?
                 <div className="image">
                     <div class="portal">
@@ -78,7 +89,13 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                    <img src={image} alt={name} />
+
+                    <div className="character">
+                        <img src={image} alt={name} />
+                        <p className="name">Name: {name}</p>
+                        <p className="specie">Specie: {specie}</p>
+                        <p className="gender">Gender: {gender}</p>
+                    </div>
                 </div>
                 :
                 <> </>
