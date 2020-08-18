@@ -8,6 +8,10 @@ const LinkName = styled.div`
     grid-column-gap: 50px;
     grid-template-columns: auto auto auto;
     padding: 10px;
+
+    &:hover{
+        cursor: pointer;
+    }
 `
 
 function Home() {
@@ -37,9 +41,11 @@ function Home() {
 
     return (
         <div className="list">
-            <LinkName href="#" onClick={() => resetData()}>
-                Reset
-            </LinkName>
+            <ul>
+                <LinkName href="#" onClick={() => resetData()}>
+                    Reset
+                </LinkName>
+            </ul>
             {data.map((item, index) => 
                 <ul key={index} onClick={ () => handleClick(item)} >
                     <LinkName href="#">
@@ -47,7 +53,9 @@ function Home() {
                     </LinkName>
                 </ul>
             )}
-            {image ? <img src={image} alt={name} /> : <> </>}
+            <div className="image">
+                {image ? <img src={image} alt={name} /> : <> </>}
+            </div>
         </div>
     )
 }
