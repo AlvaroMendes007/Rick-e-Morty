@@ -42,8 +42,44 @@ function Home() {
                     </ul>
                 )}
             </div>
-            {image ?  <div className="image"> <img src={image} alt={name} />  </div> : <> </>}
-            
+            {image ? <div className="image"> <img src={image} alt={name} />  </div> : <> </>}
+            <svg className="fire">
+                <circle cx="30" cy="30" r="10" fill="green" />
+            </svg>
+
+            <div class="portal">
+                <div class="swish">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="swirl">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <div class="swirl">
+                        <span></span>
+                        <div class="swirl">
+                            <span></span>
+                            <div class="swirl">
+                                <span></span>
+                                <div class="swirl">
+                                    <span></span>
+                                    <div class="swirl">
+                                        <span></span>
+                                        <div class="swirl">
+                                            <span></span>
+                                            <div class="swirl">
+                                                <span></span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
