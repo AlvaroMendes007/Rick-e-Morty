@@ -42,6 +42,7 @@ function Home() {
                     </ul>
                 )}
             </div>
+            
             {image ?
                 <div className="image">
                     <div class="portal">
@@ -78,9 +79,6 @@ function Home() {
                         </div>
                     </div>
                     <img src={image} alt={name} />
-                    <svg className="fire">
-                        <circle cx="30" cy="30" r="10" fill="green" />
-                    </svg>
                 </div>
                 :
                 <> </>
