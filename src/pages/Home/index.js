@@ -1,18 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import './styles.css';
-
-const LinkName = styled.div`
-    color: green;
-    display: grid;
-    grid-column-gap: 50px;
-    grid-template-columns: auto auto auto;
-    padding: 10px;
-
-    &:hover{
-        cursor: pointer;
-    }
-`
 
 function Home() {
 
@@ -29,34 +16,35 @@ function Home() {
             })
     }, []);
 
-    function handleClick(props){
+    function handleClick(props) {
         setImage(props.image);
         setName(props.name);
     }
 
-    function resetData(){
+    function resetData() {
         setImage(null);
         setName(null);
     }
 
     return (
-        <div className="list">
-            <ul>
-                <LinkName href="#" onClick={() => resetData()}>
-                    Reset
-                </LinkName>
-            </ul>
-            {data.map((item, index) => 
-                <ul key={index} onClick={ () => handleClick(item)} >
-                    <LinkName href="#">
-                        {item.name}
-                    </LinkName>
+        <>
+            <div className="list">
+                <ul>
+                    <li onClick={() => resetData()}>
+                        Reset
+                </li>
                 </ul>
-            )}
-            <div className="image">
-                {image ? <img src={image} alt={name} /> : <> </>}
+                {data.map((item, index) =>
+                    <ul key={index} onClick={() => handleClick(item)} >
+                        <li>
+                            {item.name}
+                        </li>
+                    </ul>
+                )}
             </div>
-        </div>
+            {image ?  <div className="image"> <img src={image} alt={name} />  </div> : <> </>}
+            
+        </>
     )
 }
 
