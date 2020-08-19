@@ -11,7 +11,7 @@ function Home() {
     // const [page, setPage] = useState(null);
 
     useEffect(() => {
-        fetch('https://rickandmortyapi.com/api/character/?page=1')
+        fetch('https://rickandmortyapi.com/api/character/?page=10')
             .then((results) => results.json())
             .then((data) => {
                 setData(data.results);
