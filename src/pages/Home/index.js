@@ -8,15 +8,17 @@ function Home() {
     const [name, setName] = useState(null);
     const [gender, setGender] = useState(null);
     const [specie, setSpecie] = useState(null);
-    // const [page, setPage] = useState(null);
+    const [page, setPage] = useState(1);
+
+    const url = `https://rickandmortyapi.com/api/character/?page=${page}`;
 
     useEffect(() => {
-        fetch('https://rickandmortyapi.com/api/character/?page=10')
+        fetch(url)
             .then((results) => results.json())
             .then((data) => {
                 setData(data.results);
             })
-    }, []);
+    }, [page]);
 
     function handleClick(props) {
         setImage(props.image);
@@ -28,15 +30,32 @@ function Home() {
     function resetData() {
         setImage(null);
         setName(null);
+        // setPage(page+1)
+    }
+
+    function upPage(){
+        (page >= 34 ? setPage(34) : setPage(page+1))
+    }
+
+    function downPage(){
+        (page <= 1 ? setPage(1) : setPage(page-1))
     }
 
     return (
         <>
+            <button onClick={upPage}>
+                +1
+            </button>
+
+            <button onClick={downPage}>
+                -1
+            </button>
+
             <div className="list">
                 <ul>
                     <li onClick={() => resetData()}>
                         Reset
-                </li>
+                    </li>
                 </ul>
                 {data.map((item, index) =>
                     <ul key={index} onClick={() => handleClick(item)} >
@@ -89,6 +108,7 @@ function Home() {
                         <p className="specie">Specie: {specie}</p>
                         <p className="gender">Gender: {gender}</p>
                     </div>
+
                 </div>
                 :
                 <> </>
